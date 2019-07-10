@@ -22,7 +22,7 @@ stages:
 - stage: Test
   dependsOn: Build
   jobs:
-  - job: Test-Jobs-Scripts
+  - job: Test
     displayName: Test Jobs with 1 scripts
     steps:
     - script: echo "Hello I am job step THREE for NPM TEST"
