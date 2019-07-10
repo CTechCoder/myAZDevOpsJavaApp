@@ -27,3 +27,21 @@ steps:
     summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
     reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
     failIfCoverageEmpty: true
+
+- script: |
+    echo Starting the build
+    mvn package
+  displayName: 'Build with Maven using SCRIPT Step'
+
+jobs:
+- job: Build-Jobs-Scripts
+  steps:
+  - script: echo "Hello I am job step ONE for NPM INSTALL"
+  - script: echo "Hello I am job step TWO for NPM RUN BUILD"
+#  - script: npm install
+#  - script: npm run build
+- job: Test-Jobs-Scripts
+  steps:
+  - script: echo "Hello I am job step THREE for NPM TEST"
+#  - script: npm test
+
