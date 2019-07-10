@@ -33,7 +33,6 @@ steps:
     mvn package
   displayName: 'Build with Maven using SCRIPT Step'
 
-jobs:
 - job: Build-Jobs-Scripts
   steps:
   - script: echo "Hello I am job step ONE for NPM INSTALL"
