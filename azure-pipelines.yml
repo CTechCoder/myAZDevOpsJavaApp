@@ -6,21 +6,21 @@
 trigger:
 - develop
 
-pool:
-  vmImage: 'ubuntu-latest'
-
-
 stages:
 - stage: Build
   jobs:
   - job: Build
+    pool:
+      vmImage: 'ubuntu-latest'
     displayName: Build Jobs with 2 scripts
     steps:
     - script: echo "Hello I am job step ONE for NPM INSTALL"
     - script: echo "Hello I am job step TWO for NPM RUN BUILD"
   #  - script: npm install
   #  - script: npm run build
+
 - stage: Test
+  dependsOn: Build
   jobs:
   - job: Test-Jobs-Scripts
     displayName: Test Jobs with 1 scripts
@@ -29,8 +29,11 @@ stages:
   #  - script: npm test
   
 - stage: Run
+  dependsOn: Test
   jobs:
   - job: Run
+    pool:
+      vmImage: 'ubuntu-latest'
     displayName: Run jobs using Maven
     steps:
     - task: Maven@3
