@@ -21,6 +21,7 @@ stages:
   #  - script: npm install
   #  - script: npm run build
 - stage: Test
+  jobs:
   - job: Test-Jobs-Scripts
     displayName: Test Jobs with 1 scripts
     steps:
